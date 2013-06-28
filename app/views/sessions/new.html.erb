@@ -1,0 +1,6 @@
+<%= form_for :session, url: sessions_path, html: {class: "form-signin"} do |f| %>
+	<h2 class="form-signin-heading">Ingresa tus datos</h2>
+	<%= f.text_field :email, :class => "input-block-level", :placeholder => "Email" %>
+	<%= f.password_field :password, :class => "input-block-level", :placeholder => "Password" %>
+	<%= f.button :login , :class => "btn btn-large btn-primary" %>
+<% end %>
