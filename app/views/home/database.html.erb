@@ -1,5 +1,8 @@
 <h1>Participantes</h1>
+<br/>
 <div class="offset10 span3"><a class="btn btn-large" href="/download"><i class="icon-download"></i> Descargar</a></div>
+<br/>
+<br/>
 <table class="table table-condensed">
 	<thead>
 		<tr>
@@ -18,18 +21,19 @@
 		<% @res.each do |user| %>
 		<tr>
 			<td><%=user[0] %></td>
-			<td><%=user[1] %></td>
-			<td><%=user[2] %></td>
 			<td><%=user[3] %></td>
 			<td><%=user[4] %></td>
 			<td><%=user[5] %></td>
 			<td><%=user[6] %></td>
 			<td><%=user[7] %></td>
 			<td><%=user[8] %></td>
+			<td><%=user[10] %></td>
+			<td><%=user[11] %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+<br/>
 <div class="pagination pagination-centered">
   <ul>
   	<% for i in 0..@cantidad %>
@@ -37,3 +41,5 @@
 	<% end %>
   </ul>
 </div>
+<br/>
+<br/>
