@@ -1,0 +1,39 @@
+<h1>Participantes</h1>
+<div class="offset10 span3"><a class="btn btn-large" href="/download"><i class="icon-download"></i> Descargar</a></div>
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Nombre Completo</th>
+			<th>Deporte</th>
+			<th>Email</th>
+			<th>Username</th>
+			<th>Origen</th>
+			<th>Cuando</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @res.each do |user| %>
+		<tr>
+			<td><%=user[0] %></td>
+			<td><%=user[1] %></td>
+			<td><%=user[2] %></td>
+			<td><%=user[3] %></td>
+			<td><%=user[4] %></td>
+			<td><%=user[5] %></td>
+			<td><%=user[6] %></td>
+			<td><%=user[7] %></td>
+			<td><%=user[8] %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="pagination pagination-centered">
+  <ul>
+  	<% for i in 0..@cantidad %>
+    <li><a href="/database?page=<%= i.to_s%>"><%= i.to_s%></a></li>
+	<% end %>
+  </ul>
+</div>
