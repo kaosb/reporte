@@ -2,4 +2,4 @@ Options -MultiViews
 PassengerResolveSymlinksInDocumentRoot on
 RailsEnv production
 RailsBaseURI /
-SetEnv GEM_HOME /home5/trancar1/.rvm/gems/ruby-1.9.3-p448/
+SetEnv GEM_HOME /home5/trancar1/.rvm/gems/ruby-1.9.1-p431/
