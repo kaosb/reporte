@@ -18,9 +18,14 @@ class HomeController < ApplicationController
 		# Determinamos si viene el parametro page
 		page = 0
 		if !params[:page].blank?
-			page = params[:page].to_i * 20
+			if params[:page].to_i > 0
+				page = (params[:page].to_i-1) * 20
+			else
+				page = 0
+			end
+
 		end
-		@res = my.query("select * from participantes limit "+page.to_s+",20")
+		@res = my.query("select * from participantes order by created_at desc limit "+page.to_s+",20")
 	end
 
 	def download
@@ -29,10 +34,21 @@ class HomeController < ApplicationController
 		#my = Mysql::new("127.0.0.1", "root", "kaosbite", "clerk_development")
 		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_deporteesmipasion2013")
 		@res = my.query("select * from participantes")
-		p.workbook.add_worksheet(:name => "Reporte") do |sheet|
-			sheet.add_row ["ID", "Nombre", "Apellido", "Nombre Completo", "Deporte", "Email", "Username", "Origen", "Cuando"]
-			@res.each do |elemento|
-				sheet.add_row [elemento[0], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[10], elemento[11]]
+		# Comenzamos a aplicar estilos para axlsx
+		p.workbook.styles do |s|
+			wrap_text = s.add_style :fg_color=> "FFFFFF",
+				:b => true,
+				:bg_color => "004586",
+				:sz => 12,
+				:border => { :style => :thin, :color => "00" },
+				:alignment => { :horizontal => :center,
+					:vertical => :center ,
+					:wrap_text => true }
+			p.workbook.add_worksheet(:name => "Reporte") do |sheet|
+				sheet.add_row ["ID", "Nombre", "Apellido", "Nombre Completo", "Deporte", "Email", "Username", "Origen", "Cuando"], :style => wrap_text
+				@res.each do |elemento|
+					sheet.add_row [elemento[0], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[10], elemento[11]]
+				end
 			end
 		end
 		p.use_shared_strings = true

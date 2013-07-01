@@ -1,8 +1,5 @@
 <h1>Participantes</h1>
-<br/>
-<div class="offset10 span3"><a class="btn btn-large" href="/download"><i class="icon-download"></i> Descargar</a></div>
-<br/>
-<br/>
+<div class="offset10 span3"><p><a class="btn btn-large" href="/download"><i class="icon-download"></i> Descargar</a></p></div>
 <table class="table table-condensed">
 	<thead>
 		<tr>
@@ -33,13 +30,11 @@
 		<% end %>
 	</tbody>
 </table>
-<br/>
 <div class="pagination pagination-centered">
   <ul>
   	<% for i in 0..@cantidad %>
-    <li><a href="/database?page=<%= i.to_s%>"><%= i.to_s%></a></li>
+  	<% page = i + 1 %>
+    <li><a href="/database?page=<%= page.to_s%>"><%= page.to_s%></a></li>
 	<% end %>
   </ul>
 </div>
-<br/>
-<br/>
