@@ -11,8 +11,10 @@ class HomeController < ApplicationController
 		my.query("SET NAMES UTF8")
 		count = my.query("SELECT COUNT(*) FROM participantes USE INDEX(PRIMARY);")
 		@cantidad = 0
+		@contador = 0
 		count.each do |contador|
 			@cantidad = contador[0].to_i
+			@contador = @cantidad
 		end
 		# Dividimos la cantidad de registro por la cantidad por pagina para obtener el numero de paginas.
 		@cantidad = @cantidad / 20
