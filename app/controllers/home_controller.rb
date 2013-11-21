@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	def database
 		# Conectamos la BD
 		#my = Mysql::new("127.0.0.1", "root", "kaosbite", "clerk_development")
-		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_diadelnino2013")
+		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_guagua2013")
 		# Contamos los registros en la BD
 		my.query("SET NAMES UTF8")
 		count = my.query("SELECT COUNT(*) FROM participantes USE INDEX(PRIMARY);")
