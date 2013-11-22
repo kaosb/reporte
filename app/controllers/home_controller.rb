@@ -35,7 +35,7 @@ class HomeController < ApplicationController
 		p = Axlsx::Package.new
 		# Conectamos la BD
 		#my = Mysql::new("127.0.0.1", "root", "kaosbite", "clerk_development")
-		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_diadelnino2013")
+		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_guagua2013")
 		my.query("SET NAMES UTF8")
 		@res = my.query("select * from participantes")
 		# Comenzamos a aplicar estilos para axlsx
@@ -49,9 +49,9 @@ class HomeController < ApplicationController
 					:vertical => :center ,
 					:wrap_text => true }
 			p.workbook.add_worksheet(:name => "Reporte") do |sheet|
-				sheet.add_row ["ID", "Nombre", "Apellido", "Nombre Completo", "Txt", "Email", "Username", "Origen", "Cuando"], :style => wrap_text
+				sheet.add_row ["ID", "Nombre", "Apellido", "Nombre Completo", "Email", "Username", "Origen", "Cuando"], :style => wrap_text
 				@res.each do |elemento|
-					sheet.add_row [elemento[0], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[10], elemento[11]]
+					sheet.add_row [elemento[0], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[9]]
 				end
 			end
 		end
