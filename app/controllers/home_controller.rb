@@ -33,7 +33,7 @@ class HomeController < ApplicationController
 	def download
 		p = Axlsx::Package.new
 		# Conectamos la BD
-		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_guagua2013")
+		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_navidad2013")
 		my.query("SET NAMES UTF8")
 		@res = my.query("select * from participantes")
 		# Comenzamos a aplicar estilos para axlsx
