@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	def database
 		# Conectamos la BD
 		#my = Mysql::new("127.0.0.1", "root", "kaosbite", "clerk_development")
-		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_guagua2013")
+		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_navidad2013")
 		# Contamos los registros en la BD
 		my.query("SET NAMES UTF8")
 		count = my.query("SELECT COUNT(*) FROM participantes USE INDEX(PRIMARY);")
@@ -26,7 +26,6 @@ class HomeController < ApplicationController
 			else
 				page = 0
 			end
-
 		end
 		@res = my.query("select * from participantes order by created_at desc limit "+page.to_s+",20")
 	end
@@ -34,7 +33,6 @@ class HomeController < ApplicationController
 	def download
 		p = Axlsx::Package.new
 		# Conectamos la BD
-		#my = Mysql::new("127.0.0.1", "root", "kaosbite", "clerk_development")
 		my = Mysql::new("coddea.com", "trancar1_clinica", "clinica2012+-", "trancar1_calemana_guagua2013")
 		my.query("SET NAMES UTF8")
 		@res = my.query("select * from participantes")
@@ -49,9 +47,9 @@ class HomeController < ApplicationController
 					:vertical => :center ,
 					:wrap_text => true }
 			p.workbook.add_worksheet(:name => "Reporte") do |sheet|
-				sheet.add_row ["ID", "Nombre", "Apellido", "Nombre Completo", "Email", "Username", "Origen", "Cuando"], :style => wrap_text
+				sheet.add_row ["fb_id", "Nombre", "Apellido", "Nombre Completo", "Email_fb", "Email actualizado", "Username", "Origen", "Cuando"], :style => wrap_text
 				@res.each do |elemento|
-					sheet.add_row [elemento[0], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[9]]
+					sheet.add_row [elemento[1], elemento[3], elemento[4], elemento[5], elemento[11], elemento[12], elemento[13], elemento[15], elemento[16]]
 				end
 			end
 		end

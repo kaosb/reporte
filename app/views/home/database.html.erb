@@ -3,11 +3,12 @@
 <table class="table table-condensed" style="font-size:60%;">
 	<thead>
 		<tr>
-			<th>ID</th>
+			<th>fb_id</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
 			<th>Nombre Completo</th>
-			<th>Email</th>
+			<th>Email_fb</th>
+			<th>Email actualizado</th>
 			<th>Username</th>
 			<th>Origen</th>
 			<th>Cuando</th>
@@ -16,14 +17,15 @@
 	<tbody>
 		<% @res.each do |user| %>
 		<tr>
-			<td><%=user[0] %></td>
+			<td><%=user[1] %></td>
 			<td><%=user[3] %></td>
 			<td><%=user[4] %></td>
 			<td><%=user[5] %></td>
-			<td><%=user[6] %></td>
-			<td><%=user[7] %></td>
-			<td><%=user[8] %></td>
-			<td><%=user[9] %></td>
+			<td><%=user[11] %></td>
+			<td><%=user[12] %></td>
+			<td><%=user[13] %></td>
+			<td><%=user[15] %></td>
+			<td><%=user[16] %></td>
 		</tr>
 		<% end %>
 	</tbody>
