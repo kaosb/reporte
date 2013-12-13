@@ -12,5 +12,5 @@ end
 
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem "twitter-bootstrap-rails"
-gem "axlsx"
+gem 'twitter-bootstrap-rails'
+gem 'axlsx'
