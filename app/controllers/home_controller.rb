@@ -35,7 +35,7 @@ class HomeController < ApplicationController
 		# Conectamos la BD
 		my = Mysql::new("localhost", "milogrocpech", "milogro2014+-", "milogrocpech")
 		my.query("SET NAMES UTF8")
-		@res = my.query("select * from participantes")
+		@res = my.query("select * from participantes order by created_at DESC")
 		# Comenzamos a aplicar estilos para axlsx
 		p.workbook.styles do |s|
 			wrap_text = s.add_style :fg_color=> "FFFFFF",
