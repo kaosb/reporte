@@ -4,6 +4,7 @@
 	<thead>
 		<tr>
 			<th>fb_id</th>
+			<th>img</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
 			<th>Nombre Completo</th>
@@ -18,6 +19,7 @@
 		<% @res.each do |user| %>
 		<tr>
 			<td><a href="http://www.facebook.com/<%=user[1] %>" target="_blank"><img style="width:40%;height:auto;" src="/fb_icon.png" alt="Ver perfil en facebook" /></a></td>
+			<td><a href="/img_uploads/<%=user[1] %>/.jpg" target="_blank">img</a></td>
 			<td><%=user[3] %></td>
 			<td><%=user[4] %></td>
 			<td><%=user[5] %></td>
