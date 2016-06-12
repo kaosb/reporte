@@ -5,11 +5,10 @@ class HomeController < ApplicationController
 
 	def database
 		# Conectamos la BD
-		#my = Mysql::new("127.0.0.1", "root", "kaosbite", "clerk_development")
-		my = Mysql::new("localhost", "milogrocpech", "milogro2014+-", "milogrocpech")
+		my = Mysql::new("localhost", "calemana", "calemana2016+-", "fb_calemana_comotecuidas_2016")
 		# Contamos los registros en la BD
 		my.query("SET NAMES UTF8")
-		count = my.query("SELECT COUNT(*) FROM participantes USE INDEX(PRIMARY);")
+		count = my.query("SELECT COUNT(*) FROM participant USE INDEX(PRIMARY);")
 		@cantidad = 0
 		@contador = 0
 		count.each do |contador|
@@ -27,15 +26,15 @@ class HomeController < ApplicationController
 				page = 0
 			end
 		end
-		@res = my.query("select * from participantes order by created_at desc limit "+page.to_s+",20")
+		@res = my.query("select * from participant order by created_at desc limit "+page.to_s+",20")
 	end
 
 	def download
 		p = Axlsx::Package.new
 		# Conectamos la BD
-		my = Mysql::new("localhost", "milogrocpech", "milogro2014+-", "milogrocpech")
+		my = Mysql::new("localhost", "calemana", "calemana2016+-", "fb_calemana_comotecuidas_2016")
 		my.query("SET NAMES UTF8")
-		@res = my.query("select * from participantes")
+		@res = my.query("select * from participant")
 		# Comenzamos a aplicar estilos para axlsx
 		p.workbook.styles do |s|
 			wrap_text = s.add_style :fg_color=> "FFFFFF",
@@ -47,9 +46,9 @@ class HomeController < ApplicationController
 					:vertical => :center ,
 					:wrap_text => true }
 			p.workbook.add_worksheet(:name => "Reporte") do |sheet|
-				sheet.add_row ["fb_id", "Nombre", "Apellido", "Nombre Completo", "Email", "Puntaje PSU", "Open", "Votos", "Cuando"], :style => wrap_text
+				sheet.add_row ["userID", "Nombre", "Apellido", "Nombre Completo", "Email", "txt", "template", "Origin", "post_id", "Fecha"], :style => wrap_text
 				@res.each do |elemento|
-					sheet.add_row [elemento[1], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[9], elemento[10]]
+					sheet.add_row [elemento[1], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[9], elemento[10], elemento[11]]
 				end
 			end
 		end
