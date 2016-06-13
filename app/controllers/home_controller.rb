@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
 	def database
 		# Conectamos la BD
-		my = Mysql::new("104.236.148.150", "calemana", "calemana2016+-", "fb_calemana_comotecuidas_2016")
+		my = Mysql::new("104.236.148.150:3306", "calemana", "calemana2016+-", "fb_calemana_comotecuidas_2016")
 		# Contamos los registros en la BD
 		my.query("SET NAMES UTF8")
 		count = my.query("SELECT COUNT(*) FROM participant USE INDEX(PRIMARY);")
@@ -32,7 +32,7 @@ class HomeController < ApplicationController
 	def download
 		p = Axlsx::Package.new
 		# Conectamos la BD
-		my = Mysql::new("104.236.148.150", "calemana", "calemana2016+-", "fb_calemana_comotecuidas_2016")
+		my = Mysql::new("104.236.148.150:3306", "calemana", "calemana2016+-", "fb_calemana_comotecuidas_2016")
 		my.query("SET NAMES UTF8")
 		@res = my.query("select * from participant")
 		# Comenzamos a aplicar estilos para axlsx
