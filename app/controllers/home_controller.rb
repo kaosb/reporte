@@ -48,7 +48,7 @@ class HomeController < ApplicationController
 			p.workbook.add_worksheet(:name => "Reporte") do |sheet|
 				sheet.add_row ["userID", "Nombre", "Apellido", "Nombre Completo", "Email", "txt", "template", "Origin", "post_id", "Fecha"], :style => wrap_text
 				@res.each do |elemento|
-					sheet.add_row [elemento[1], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[9], elemento[10], elemento[11]]
+					sheet.add_row [elemento[1], elemento[3], elemento[4], elemento[5], elemento[6], elemento[7], elemento[8], elemento[9], elemento[10], elemento[11]], :types => [:string, nil, nil, nil, nil, nil, nil, nil, nil, nil]
 				end
 			end
 		end
